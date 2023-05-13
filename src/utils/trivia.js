@@ -30,7 +30,7 @@ async function fetchQuestions(amount) {
  */
 async function fetchQuestionsByCategory(amount, categoryId) {
     try {
-        const url = await fetch(`https://opentdb.com/api.php?amount=${amount}&category=${categoryId}`);
+        const url = await fetch(`https://opentdb.com/api.php?amount=${amount}&type=multiple&category=${categoryId}`);
         const response = await url.json();
         const questionsByCategory = response.results;
 
