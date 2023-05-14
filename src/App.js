@@ -1,11 +1,12 @@
 
 import './styles/App.css';
+import Game from './components/Game';
 
 
 export default function App() {
   return (
     <div className="App">
-      Flerplattformsapplikationer med webbtekniker
+      <Game />
     </div>
   );
 };
