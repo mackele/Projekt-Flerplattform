@@ -4,7 +4,7 @@
  * @param {Number} amount - The desired number of questions (maximum 50 per request) 
  * @returns {Array} - An array with the questions
  */
-async function fetchQuestions(amount) {
+export async function fetchQuestions(amount) {
     try {
         const url = await fetch(`https://opentdb.com/api.php?amount=${amount}&type=multiple`);
         const response = await url.json();
@@ -28,7 +28,7 @@ async function fetchQuestions(amount) {
  * @param {Number} categoryId - The desired category with questions
  * @returns {Array} - An array with the questions
  */
-async function fetchQuestionsByCategory(amount, categoryId) {
+export async function fetchQuestionsByCategory(amount, categoryId) {
     try {
         const url = await fetch(`https://opentdb.com/api.php?amount=${amount}&type=multiple&category=${categoryId}`);
         const response = await url.json();
@@ -50,7 +50,7 @@ async function fetchQuestionsByCategory(amount, categoryId) {
  * Function that fetch all the categories
  * @returns {Array} - An array with the categories
  */
-async function fetchCategories() {
+export async function fetchCategories() {
     try {
         const url = await fetch(`https://opentdb.com/api_category.php`);
         const response = await url.json();
