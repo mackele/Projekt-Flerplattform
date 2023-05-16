@@ -6,6 +6,7 @@ import { fetchQuestionsByCategory, fetchCategories } from '../utils/trivia';
 export default function Game() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategoryName, setSelectedCategoryName] = useState(null);
   const [numQuestions, setNumQuestions] = useState(1); // Initial state
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -24,7 +25,10 @@ export default function Game() {
 
 
   const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
+    const selectedCategoryID = (e.target.value);
+    setSelectedCategory(selectedCategoryID);
+    const selectedCategoryName = categories.find((category) => Number(category.id) === Number(selectedCategoryID));
+    setSelectedCategoryName(selectedCategoryName ? selectedCategoryName.name : null);
   };
 
 
@@ -57,7 +61,7 @@ export default function Game() {
         };
         let newScore = {
             "Score": score,
-            "Category": selectedCategory
+            "Category": selectedCategoryName
         };
         resultsArr.push(newScore);
 
