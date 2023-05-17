@@ -1,8 +1,8 @@
-
 import React, {useState} from 'react'
 import Menu from './Menu';
 import Question from './Question';
 import { fetchQuestionsByCategory } from '../utils/trivia';
+import Scoreboard from './Scoreboard';
 
 
 export default function Game() {
@@ -43,6 +43,10 @@ export default function Game() {
       {questions.length > 0 && (
         <Question questions={questions} questionIndex={currentQuestionIndex} score={score} setScore={setScore} setCurrentQuestionIndex={setCurrentQuestionIndex} selectedCategoryName={selectedCategoryName}></Question>
       )}
+      <br></br>
+      <div id="scoreboard">
+        <Scoreboard />
+      </div>
     </div>
   );
 };

@@ -4,8 +4,8 @@ import { fetchCategories } from '../utils/trivia';
 
 
 export default function Menu(props) {
-  const { categories, setCategories, selectedCategory, setSelectedCategory, selectedCategoryName, setSelectedCategoryName,
-    numQuestions, setNumQuestions, questions, setQuestions
+  const { categories, setCategories, selectedCategory, setSelectedCategory, setSelectedCategoryName,
+    numQuestions, setNumQuestions
   } = props;
   
   useEffect(function categories() {
@@ -14,7 +14,7 @@ export default function Menu(props) {
       setCategories(categoriesData);
     };
     fetchCategoriesData();
-  }, []);
+  }, [setCategories]);
 
 
   function selectCategory (event) {
