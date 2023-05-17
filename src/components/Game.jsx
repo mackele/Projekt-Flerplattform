@@ -1,8 +1,10 @@
+
 import React, {useState} from 'react'
+import { fetchQuestionsByCategory } from '../utils/trivia';
 import Menu from './Menu';
 import Question from './Question';
-import { fetchQuestionsByCategory } from '../utils/trivia';
 import Scoreboard from './Scoreboard';
+
 
 export default function Game() {
   const [categories, setCategories] = useState([]);
@@ -14,6 +16,9 @@ export default function Game() {
   const [score, setScore] = useState(0);
 
 
+  /**
+   * Function that starts the question game by fetching the questions and setting the game variables
+   */
   async function handleStartQuiz () {
     const quizQuestions = await fetchQuestionsByCategory(
       numQuestions, selectedCategory
@@ -26,9 +31,11 @@ export default function Game() {
   
 
   return (
-    <div id="container">
+    <div>
       <h1>Game component</h1>
-      {!questions.length && (
+
+      {/* Display the menu if the game is not executed */}
+      {!questions.length > 0 && (
         <div id="menu">
           <Menu categories={categories} setCategories={setCategories}
           selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}
@@ -36,16 +43,21 @@ export default function Game() {
           numQuestions={numQuestions} setNumQuestions={setNumQuestions}
           questions={questions} setQuestions={setQuestions}/>
 
-          <button onClick={handleStartQuiz} disabled={!selectedCategory}>Starta denna fantastiska quiz</button> 
+          <button onClick={handleStartQuiz} disabled={!selectedCategory}>Starta quiz</button> 
         </div>
       )}
+
+      {/* Display the questions when the game is executed */}
       {questions.length > 0 && (
-        <Question questions={questions} questionIndex={currentQuestionIndex} score={score} setScore={setScore} setCurrentQuestionIndex={setCurrentQuestionIndex} selectedCategoryName={selectedCategoryName}></Question>
+        <div id='questions'> 
+          <Question questions={questions} questionIndex={currentQuestionIndex} score={score} setScore={setScore} setCurrentQuestionIndex={setCurrentQuestionIndex} selectedCategoryName={selectedCategoryName}></Question>
+        </div>
       )}
-      <br></br>
+      
+      {/* Display the scoreboard in the main menu if the game is not executed */}
       {!questions.length > 0 && (
         <div id="scoreboard">
-        <Scoreboard />
+          <Scoreboard />
         </div>
       )}
     </div>

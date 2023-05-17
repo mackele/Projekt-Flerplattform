@@ -1,11 +1,15 @@
+
 import React, { useEffect } from 'react'
 import { fetchCategories } from '../utils/trivia';
 
+
 export default function Menu(props) {
-  const { categories, setCategories, selectedCategory, setSelectedCategory, setSelectedCategoryName,
-    numQuestions, setNumQuestions
-  } = props;
+  const { categories, setCategories, selectedCategory, setSelectedCategory, setSelectedCategoryName, numQuestions, setNumQuestions } = props;
   
+  
+  /**
+   * Function that fetch and set the categories
+   */
   useEffect(function categories() {
     async function fetchCategoriesData () {
       const categoriesData = await fetchCategories();
@@ -14,6 +18,11 @@ export default function Menu(props) {
     fetchCategoriesData();
   }, [setCategories]);
 
+
+  /**
+   * Function that set the selected category both by id (setSelectedCategory) and name (setSelectedCategoryName)
+   * @param {Event} event - The onclick event that invokes the function
+   */
   function selectCategory (event) {
     const selectedCategoryID = (event.target.value);
     setSelectedCategory(selectedCategoryID);
@@ -21,9 +30,14 @@ export default function Menu(props) {
     setSelectedCategoryName(selectedCategoryName ? selectedCategoryName.name : null);
   };
 
+  /**
+   * Function that set the number of selected questions
+   * @param {Event} event - The onclick event that invokes the function
+   */
   function selectAmountOfQuestions(event) {
     setNumQuestions(Number(event.target.value));
   };
+  
 
   return (
     <div>

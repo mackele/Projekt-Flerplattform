@@ -1,5 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import Score from "./Score";
+
 
 export default function Question(props) {
   const { questions, questionIndex, score, setScore, setCurrentQuestionIndex, selectedCategoryName } = props;
@@ -7,6 +9,10 @@ export default function Question(props) {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
 
+
+  /**
+   * Function that randomize and set the order of the alternatives for a question in order to prevent the same 'alternative' to be correct each time
+   */
   useEffect(function shuffleQuestions() {
     if (questions[questionIndex]) {
       const shuffledQuestions = [...questions[questionIndex].incorrect_answers, questions[questionIndex].correct_answer].sort(() => Math.random() - 0.5);
@@ -14,11 +20,12 @@ export default function Question(props) {
     };
   }, [questions, questionIndex]);
 
+
   /**
    * Function that handles the selected answer
-   * If the answer is correct the score increases and an class will be appended
+   * If the answer is correct the score increases and an class will be appended to the right and selected answer
    * @param {Event} event - The onclick event that invokes the function
-   * @param {*} isCorrect - The selected answer
+   * @param {Boolean} isCorrect - The selected answer
    */
   function handleAnswerClick(event, isCorrect) {
     if (selectedAnswer === null){
@@ -29,9 +36,10 @@ export default function Question(props) {
           event.currentTarget.classList.add("incorrect-answer");
         };
         setSelectedAnswer(event.currentTarget);
-      }
-    }
-    
+      };
+    };
+  
+
   /**
    * Function that set the score of the round
    * @param {Number} score - The score of the round
@@ -51,6 +59,7 @@ export default function Question(props) {
     localStorage.setItem("Results", JSON.stringify(resultsArr));
   };
 
+
   /**
    * Function that displays next question
    */
@@ -64,9 +73,12 @@ export default function Question(props) {
       setFinished(true);
     };
   };
+
   
   return (
     <div>
+
+      {/* Display the questions if the game is not finished */}
       {!finished &&
         <div> 
           <h2>Question no: {questionIndex + 1} / {questions.length}</h2>
@@ -88,6 +100,8 @@ export default function Question(props) {
           </div>
         </div>
       }
+
+      {/* Display the score when the round is finished */}
       {finished && <Score index={questionIndex} score={score} />}
     </div>
   );

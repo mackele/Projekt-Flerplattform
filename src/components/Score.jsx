@@ -1,7 +1,11 @@
+
 import React from 'react';
+
 
 export default function Score (props){
     const { index, score } = props;
+
+
     /**
      * Function that reloads page
      */
@@ -11,8 +15,8 @@ export default function Score (props){
 
     return (
         <div>
-            <h3>Ditt Resultat</h3>
-            <p>{score}/{index}</p>
+            <h3>Ditt resultat</h3>
+            <p>{score}/{index + 1}</p>
             <button onClick={reload}>Meny</button>
         </div>
     );

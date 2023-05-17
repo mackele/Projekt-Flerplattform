@@ -1,8 +1,14 @@
+
 import React, {useEffect, useState} from 'react'
+
 
 export default function Scoreboard() {
   const [results, setResults] = useState([]);
 
+
+  /**
+   * Function that fetch and set the results saved in localStorage
+   */
   useEffect(function results() {
     function fetchResults() {
       const resultsData = localStorage.getItem('Results');
@@ -12,11 +18,14 @@ export default function Scoreboard() {
     } fetchResults();
   }, []);
 
+
   return (
-    <div> 
-      <h2>Ditt resultat</h2>
+    <div>
+
+      {/* Display the scoreboard if there are any results */}
       {results.length > 0 && (
         <div>
+          <h2>Ditt resultat</h2>
           <table>
             <thead>
               <tr>
