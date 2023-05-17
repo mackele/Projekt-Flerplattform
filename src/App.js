@@ -1,6 +1,6 @@
 
 import './styles/App.css';
-import Game from './components/Demo';
+import Game from './components/Game';
 
 
 export default function App() {
