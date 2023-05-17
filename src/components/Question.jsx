@@ -3,7 +3,7 @@ import React from 'react'
 
 
 export default function Question(props) {
-  const {questions, questionIndex, score, setScore, setCurrentQuestionIndex, currentQuestionIndex, selectedCategoryName} = props;
+  const {questions, questionIndex, score, setScore, setCurrentQuestionIndex, selectedCategoryName} = props;
 
   const handleAnswerClick = (event, isCorrect) => {
     const target = event.currentTarget;
@@ -12,8 +12,9 @@ export default function Question(props) {
       target.classList.add("correct-answer");
     } else {
       target.classList.add("incorrect-answer");
-    }
-  }
+    };
+  };
+
 
   const nextQuestion = () => {
     const nextQuestionIndex = questionIndex + 1;
@@ -34,8 +35,8 @@ export default function Question(props) {
       localStorage.setItem("Results", JSON.stringify(resultsArr));
     };
   };
-  
-  console.log(questions);
+
+
   return (
     <div>Question component
       {/* Visar upp den fråga man är på */}

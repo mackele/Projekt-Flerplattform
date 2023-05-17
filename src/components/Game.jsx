@@ -1,8 +1,8 @@
 
 import React, {useState} from 'react'
 import Menu from './Menu';
-import { fetchQuestionsByCategory } from '../utils/trivia';
 import Question from './Question';
+import { fetchQuestionsByCategory } from '../utils/trivia';
 
 
 export default function Game() {
@@ -13,7 +13,7 @@ export default function Game() {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0)
-  const [showScore, setShowScore] = useState(false);
+
 
   async function handleStartQuiz () {
     const quizQuestions = await fetchQuestionsByCategory(
@@ -22,16 +22,15 @@ export default function Game() {
     setCurrentQuestionIndex(0);
     setQuestions(quizQuestions);
     setScore(0);
-    console.log("Quizen startar")
-  }
+    console.log("Quizen startar");
+  };
   
 
   return (
     <div id="container">
-      <h1>Hejsan</h1>
+      <h1>Game component</h1>
       {!questions.length && (
         <div id="menu">
-          Game component - TA BORT SEN
           <Menu categories={categories} setCategories={setCategories}
           selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}
           selectedCategoryName={selectedCategoryName} setSelectedCategoryName={setSelectedCategoryName}
@@ -42,7 +41,7 @@ export default function Game() {
         </div>
       )}
       {questions.length > 0 && (
-        <Question questions={questions} questionIndex={currentQuestionIndex} score={score} setScore={setScore} setCurrentQuestionIndex={setCurrentQuestionIndex} selectedCategoryName={selectedCategoryName} showScore={showScore}></Question>
+        <Question questions={questions} questionIndex={currentQuestionIndex} score={score} setScore={setScore} setCurrentQuestionIndex={setCurrentQuestionIndex} selectedCategoryName={selectedCategoryName}></Question>
       )}
     </div>
   );
