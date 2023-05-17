@@ -6,7 +6,7 @@ import Score from "./Score";
 export default function Question(props) {
   const { questions, questionIndex, score, setScore, setCurrentQuestionIndex, selectedCategoryName } = props;
   const [finished, setFinished] = useState(false);
-
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   /**
    * Function that handles the selected answer
@@ -15,13 +15,17 @@ export default function Question(props) {
    * @param {*} isCorrect - The selected answer
    */
   function handleAnswerClick(event, isCorrect) {
-    if (isCorrect) {
-      setScore(score + 1);
-      event.currentTarget.classList.add("correct-answer");
-    } else {
-      event.currentTarget.classList.add("incorrect-answer");
-    };
-  };
+    if (selectedAnswer === null){
+        if (isCorrect) {
+          setScore(score + 1);
+          event.currentTarget.classList.add("correct-answer");
+        } else {
+          event.currentTarget.classList.add("incorrect-answer");
+        };
+        setSelectedAnswer(event.currentTarget);
+      }
+    }
+    
 
 
   /**
@@ -51,6 +55,7 @@ export default function Question(props) {
     const nextQuestionIndex = questionIndex + 1;
     if (nextQuestionIndex < questions.length) {
       setCurrentQuestionIndex(nextQuestionIndex);
+      setSelectedAnswer(null); 
     } else {
       setLocalStorage(score, selectedCategoryName)
       setFinished(true);
