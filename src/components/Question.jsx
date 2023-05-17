@@ -1,7 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
 import Score from "./Score";
-
 
 export default function Question(props) {
   const { questions, questionIndex, score, setScore, setCurrentQuestionIndex, selectedCategoryName } = props;
@@ -9,14 +7,12 @@ export default function Question(props) {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
 
-
   useEffect(function shuffleQuestions() {
     if (questions[questionIndex]) {
       const shuffledQuestions = [...questions[questionIndex].incorrect_answers, questions[questionIndex].correct_answer].sort(() => Math.random() - 0.5);
       setShuffledQuestions(shuffledQuestions);
     };
   }, [questions, questionIndex]);
-
 
   /**
    * Function that handles the selected answer
@@ -36,8 +32,6 @@ export default function Question(props) {
       }
     }
     
-
-
   /**
    * Function that set the score of the round
    * @param {Number} score - The score of the round
@@ -57,7 +51,6 @@ export default function Question(props) {
     localStorage.setItem("Results", JSON.stringify(resultsArr));
   };
 
-
   /**
    * Function that displays next question
    */
@@ -71,8 +64,7 @@ export default function Question(props) {
       setFinished(true);
     };
   };
-
-
+  
   return (
     <div>
       {!finished &&

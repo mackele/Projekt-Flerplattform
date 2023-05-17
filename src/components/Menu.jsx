@@ -1,7 +1,5 @@
-
 import React, { useEffect } from 'react'
 import { fetchCategories } from '../utils/trivia';
-
 
 export default function Menu(props) {
   const { categories, setCategories, selectedCategory, setSelectedCategory, setSelectedCategoryName,
@@ -16,7 +14,6 @@ export default function Menu(props) {
     fetchCategoriesData();
   }, [setCategories]);
 
-
   function selectCategory (event) {
     const selectedCategoryID = (event.target.value);
     setSelectedCategory(selectedCategoryID);
@@ -24,12 +21,10 @@ export default function Menu(props) {
     setSelectedCategoryName(selectedCategoryName ? selectedCategoryName.name : null);
   };
 
-
   function selectAmountOfQuestions(event) {
     setNumQuestions(Number(event.target.value));
   };
 
-  
   return (
     <div>
       <label>
