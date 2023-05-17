@@ -1,23 +1,23 @@
-
 import React from 'react'
+import Score from "./Score"
 
 
 export default function Question(props) {
-  const {questions, questionIndex, score, setScore, setCurrentQuestionIndex, selectedCategoryName} = props;
+  let {questions, questionIndex, score, setScore, setCurrentQuestionIndex, selectedCategoryName} = props;
 
-  const handleAnswerClick = (event, isCorrect) => {
-    const target = event.currentTarget;
+  function handleAnswerClick (event, isCorrect) {
+    
     if (isCorrect) {
       setScore(score + 1);
-      target.classList.add("correct-answer");
+      event.currentTarget.classList.add("correct-answer");
     } else {
-      target.classList.add("incorrect-answer");
+      event.currentTarget.classList.add("incorrect-answer");
     };
   };
 
 
-  const nextQuestion = () => {
-    const nextQuestionIndex = questionIndex + 1;
+  function nextQuestion () {
+    let nextQuestionIndex = questionIndex + 1;
     if (nextQuestionIndex < questions.length) {
       setCurrentQuestionIndex(nextQuestionIndex);
     } else {
@@ -34,6 +34,8 @@ export default function Question(props) {
 
       localStorage.setItem("Results", JSON.stringify(resultsArr));
     };
+    console.log(questionIndex +1)
+    console.log(questions.length)
   };
 
 
@@ -56,6 +58,13 @@ export default function Question(props) {
         ))}
       </ul>
       <button onClick={nextQuestion}>Nästa fråga</button>
+      <div className='score'>
+        <p>Score:</p>
+        <p>{score}</p>
+      </div>
+      {questions.length +1 === questionIndex +2  && (
+        <Score index={questionIndex} score={score}/>
+      )}
     </div>
   );
 };
