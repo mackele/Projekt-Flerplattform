@@ -14,7 +14,6 @@ export async function fetchQuestions(amount) {
         for (let i = 0; i < questions.length; i++) {
             questionsArr.push(questions[i]);
         };
-        console.log(questionsArr); // log the arr for verification
         return questionsArr;
     } catch (error) {
         throw new Error(`Error with fetch of questions ${error.message}`);
@@ -38,7 +37,6 @@ export async function fetchQuestionsByCategory(amount, categoryId) {
         for (let i = 0; i < questionsByCategory.length; i++) {
             questionsByCategoryArr.push(questionsByCategory[i]);
         };
-        console.log(questionsByCategoryArr); // log the arr for verification
         return questionsByCategoryArr;
     } catch (error) {
         throw new Error(`Error with fetch of questions by category ${error.message}`);
@@ -60,7 +58,6 @@ export async function fetchCategories() {
         for (let i = 0; i < categories.length; i++) {
             categoryArr.push(categories[i]);
         };
-        console.log(categoryArr); // log the arr for verification
         return categoryArr;
     } catch (error) {
         throw new Error(`Error with fetch of categories ${error.message}`);

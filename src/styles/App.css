@@ -3,3 +3,11 @@
 body {
   background-color: grey;
 }
+
+.correct-answer {
+  background-color: green;
+}
+
+.incorrect-answer {
+  background-color: red;
+}
