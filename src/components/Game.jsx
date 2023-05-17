@@ -4,7 +4,6 @@ import Question from './Question';
 import { fetchQuestionsByCategory } from '../utils/trivia';
 import Scoreboard from './Scoreboard';
 
-
 export default function Game() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -44,9 +43,11 @@ export default function Game() {
         <Question questions={questions} questionIndex={currentQuestionIndex} score={score} setScore={setScore} setCurrentQuestionIndex={setCurrentQuestionIndex} selectedCategoryName={selectedCategoryName}></Question>
       )}
       <br></br>
-      <div id="scoreboard">
+      {!questions.length > 0 && (
+        <div id="scoreboard">
         <Scoreboard />
-      </div>
+        </div>
+      )}
     </div>
   );
 };
