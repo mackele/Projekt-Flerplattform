@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Score from "./Score";
 
 
@@ -7,6 +7,16 @@ export default function Question(props) {
   const { questions, questionIndex, score, setScore, setCurrentQuestionIndex, selectedCategoryName } = props;
   const [finished, setFinished] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [shuffledQuestions, setShuffledQuestions] = useState([]);
+
+
+  useEffect(function shuffleQuestions() {
+    if (questions[questionIndex]) {
+      const shuffledQuestions = [...questions[questionIndex].incorrect_answers, questions[questionIndex].correct_answer].sort(() => Math.random() - 0.5);
+      setShuffledQuestions(shuffledQuestions);
+    };
+  }, [questions, questionIndex]);
+
 
   /**
    * Function that handles the selected answer
@@ -70,19 +80,14 @@ export default function Question(props) {
           <h2>Question no: {questionIndex + 1} / {questions.length}</h2>
           <h3>{questions[questionIndex]?.question}</h3>
           <ul>
-            {questions[questionIndex]?.incorrect_answers && questions[questionIndex]?.correct_answer && [
-              ...questions[questionIndex].incorrect_answers,
-              questions[questionIndex].correct_answer
-            ]
-              .sort(() => Math.random() - 0.5)
-              .map((answer) => (
-                <li
-                  key={answer}
-                  onClick={(event) => handleAnswerClick(event, answer === questions[questionIndex]?.correct_answer)}
-                >
-                  {answer}
-                </li>
-              ))}
+            {shuffledQuestions.map((answer) => (
+              <li
+                key={answer}
+                onClick={(event) => handleAnswerClick(event, answer === questions[questionIndex]?.correct_answer)}
+              >
+                {answer}
+              </li>
+            ))}
           </ul>
           <button onClick={nextQuestion}>{questionIndex === questions.length - 1 ? "Finish" : "Next Question"}</button>
           <div className='score'>
