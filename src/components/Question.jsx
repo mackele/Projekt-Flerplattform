@@ -8,6 +8,12 @@ export default function Question(props) {
   const [finished, setFinished] = useState(false);
 
 
+  /**
+   * Function that handles the selected answer
+   * If the answer is correct the score increases and an class will be appended
+   * @param {Event} event - The onclick event that invokes the function
+   * @param {*} isCorrect - The selected answer
+   */
   function handleAnswerClick(event, isCorrect) {
     if (isCorrect) {
       setScore(score + 1);
@@ -18,23 +24,35 @@ export default function Question(props) {
   };
 
 
+  /**
+   * Function that set the score of the round
+   * @param {Number} score - The score of the round
+   * @param {String} selectedCategoryName - The name of the selected category
+   */
+  function setLocalStorage(score, selectedCategoryName) {
+    const results = localStorage.getItem("Results");
+    let resultsArr = [];
+    if (results) {
+      resultsArr = JSON.parse(results);
+    }
+    const newScore = {
+      "Score": score,
+      "Category": selectedCategoryName
+    };
+    resultsArr.push(newScore);
+    localStorage.setItem("Results", JSON.stringify(resultsArr));
+  };
+
+
+  /**
+   * Function that displays next question
+   */
   function nextQuestion() {
     const nextQuestionIndex = questionIndex + 1;
     if (nextQuestionIndex < questions.length) {
       setCurrentQuestionIndex(nextQuestionIndex);
     } else {
-      const results = localStorage.getItem("Results");
-      let resultsArr = [];
-      if (results) {
-        resultsArr = JSON.parse(results);
-      }
-      const newScore = {
-        "Score": score,
-        "Category": selectedCategoryName
-      };
-      resultsArr.push(newScore);
-      localStorage.setItem("Results", JSON.stringify(resultsArr));
-
+      setLocalStorage(score, selectedCategoryName)
       setFinished(true);
     };
   };
