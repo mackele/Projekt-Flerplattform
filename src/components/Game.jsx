@@ -11,6 +11,7 @@ export default function Game() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedCategoryName, setSelectedCategoryName] = useState(null);
   const [numQuestions, setNumQuestions] = useState(5);
+  const [difficulty, setDifficulty] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -21,7 +22,7 @@ export default function Game() {
    */
   async function handleStartQuiz () {
     const quizQuestions = await fetchQuestionsByCategory(
-      numQuestions, selectedCategory
+      numQuestions, selectedCategory, difficulty
     );
     setCurrentQuestionIndex(0);
     setQuestions(quizQuestions);
@@ -41,7 +42,8 @@ export default function Game() {
           selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}
           selectedCategoryName={selectedCategoryName} setSelectedCategoryName={setSelectedCategoryName}
           numQuestions={numQuestions} setNumQuestions={setNumQuestions}
-          questions={questions} setQuestions={setQuestions}/>
+          questions={questions} setQuestions={setQuestions}
+          difficulty={difficulty} setDifficulty={setDifficulty}/>
 
           <button onClick={handleStartQuiz} disabled={!selectedCategory}>Starta quiz</button> 
         </div>

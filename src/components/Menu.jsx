@@ -4,7 +4,7 @@ import { fetchCategories } from '../utils/trivia';
 
 
 export default function Menu(props) {
-  const { categories, setCategories, selectedCategory, setSelectedCategory, setSelectedCategoryName, numQuestions, setNumQuestions } = props;
+  const { categories, setCategories, selectedCategory, setSelectedCategory, setSelectedCategoryName, numQuestions, setNumQuestions, difficulty, setDifficulty } = props;
   
   
   /**
@@ -30,12 +30,22 @@ export default function Menu(props) {
     setSelectedCategoryName(selectedCategoryName ? selectedCategoryName.name : null);
   };
 
+  
   /**
    * Function that set the number of selected questions
    * @param {Event} event - The onclick event that invokes the function
    */
   function selectAmountOfQuestions(event) {
     setNumQuestions(Number(event.target.value));
+  };
+
+
+  /**
+   * Function that set the difficulty of the questions
+   * @param {Event} event - The onclick event that invokes the function
+   */
+  function selectDifficulty(event) {
+    setDifficulty(String(event.target.value));
   };
   
 
@@ -56,6 +66,16 @@ export default function Menu(props) {
       <label>
           Number of questions:
           <input type="number" min="5" max="20" value={numQuestions} onChange={selectAmountOfQuestions} />
+      </label>
+
+      <label>
+      Difficulty 
+        <select value={difficulty ? difficulty : 0} onChange={selectDifficulty}>
+          <option>Select difficulty</option>
+          <option key={'easy'} value={'easy'}>Easy</option>
+          <option key={'medium'} value={'medium'}>Medium</option>
+          <option key={'hard'} value={'hard'}>Hard</option>
+        </select>
       </label>
     </div>
   );

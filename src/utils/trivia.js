@@ -2,11 +2,12 @@
  * Function that fetch questions by category
  * @param {Number} amount - The desired number of questions (maximum 50 per request) 
  * @param {Number} categoryId - The desired category with questions
+ * @param {String} difficulty - The desired difficulty (easy, medium, hard)
  * @returns {Array} - An array with the questions
  */
-export async function fetchQuestionsByCategory(amount, categoryId) {
+export async function fetchQuestionsByCategory(amount, categoryId, difficulty) {
     try {
-        const url = await fetch(`https://opentdb.com/api.php?amount=${amount}&type=multiple&category=${categoryId}`);
+        const url = await fetch(`https://opentdb.com/api.php?amount=${amount}&type=multiple&category=${categoryId}&difficulty=${difficulty}`);
         const response = await url.json();
         const questionsByCategory = response.results;
 
