@@ -1,26 +1,3 @@
-
-/**
- * Function that fetch questions
- * @param {Number} amount - The desired number of questions (maximum 50 per request) 
- * @returns {Array} - An array with the questions
- */
-export async function fetchQuestions(amount) {
-    try {
-        const url = await fetch(`https://opentdb.com/api.php?amount=${amount}&type=multiple`);
-        const response = await url.json();
-        const questions = response.results;
-
-        const questionsArr = [];
-        for (let i = 0; i < questions.length; i++) {
-            questionsArr.push(questions[i]);
-        };
-        return questionsArr;
-    } catch (error) {
-        throw new Error(`Error with fetch of questions ${error.message}`);
-    };
-};
-
-
 /**
  * Function that fetch questions by category
  * @param {Number} amount - The desired number of questions (maximum 50 per request) 
