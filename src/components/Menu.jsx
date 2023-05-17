@@ -34,8 +34,8 @@ export default function Menu(props) {
     <div>
       <label>
         Category
-        <select value={selectedCategory} onChange={selectCategory}>
-          <option value="">Select Category</option>
+        <select value={selectedCategory ? selectedCategory : 0} onChange={selectCategory}>
+          <option>Select Category</option>
           {categories.map((category) => (
             <option key={category.id} value={category.id}>
               {category.name}

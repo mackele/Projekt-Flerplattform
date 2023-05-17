@@ -1,9 +1,12 @@
+
 import React, { useState } from 'react';
 import Score from "./Score";
+
 
 export default function Question(props) {
   const { questions, questionIndex, score, setScore, setCurrentQuestionIndex, selectedCategoryName } = props;
   const [finished, setFinished] = useState(false);
+
 
   function handleAnswerClick(event, isCorrect) {
     if (isCorrect) {
@@ -11,8 +14,9 @@ export default function Question(props) {
       event.currentTarget.classList.add("correct-answer");
     } else {
       event.currentTarget.classList.add("incorrect-answer");
-    }
-  }
+    };
+  };
+
 
   function nextQuestion() {
     const nextQuestionIndex = questionIndex + 1;
@@ -32,8 +36,9 @@ export default function Question(props) {
       localStorage.setItem("Results", JSON.stringify(resultsArr));
 
       setFinished(true);
-    }
-  }
+    };
+  };
+
 
   return (
     <div>
@@ -66,4 +71,4 @@ export default function Question(props) {
       {finished && <Score index={questionIndex} score={score} />}
     </div>
   );
-}
+};

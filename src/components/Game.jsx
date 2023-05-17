@@ -12,7 +12,7 @@ export default function Game() {
   const [numQuestions, setNumQuestions] = useState(5);
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState(0);
 
 
   async function handleStartQuiz () {
