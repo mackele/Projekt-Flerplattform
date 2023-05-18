@@ -103,7 +103,7 @@ export default function Question(props) {
       }
 
       {/* Display the score when the round is finished */}
-      {finished && <Score index={questionIndex} score={score} />}
+      {finished && <Score questionIndex={questionIndex} score={score} />}
     </div>
   );
 };
