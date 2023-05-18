@@ -53,7 +53,7 @@ export default function Menu(props) {
     <div>
       <label>
         Category
-        <select value={selectedCategory ? selectedCategory : 0} onChange={selectCategory}>
+        <select id="selectCategory" value={selectedCategory ? selectedCategory : 0} onChange={selectCategory}>
           <option>Select Category</option>
           {categories.map((category) => (
             <option key={category.id} value={category.id}>
@@ -64,13 +64,13 @@ export default function Menu(props) {
       </label>
 
       <label>
-          Number of questions:
-          <input type="number" min="5" max="20" value={numQuestions} onChange={selectAmountOfQuestions} />
+          Number of questions
+          <input id="selectNoQ" type="number" min="5" max="20" value={numQuestions} onChange={selectAmountOfQuestions} />
       </label>
 
       <label>
       Difficulty 
-        <select value={difficulty ? difficulty : 0} onChange={selectDifficulty}>
+        <select id="selectDifficulty" value={difficulty ? difficulty : 0} onChange={selectDifficulty}>
           <option>Select difficulty</option>
           <option key={'easy'} value={'easy'}>Easy</option>
           <option key={'medium'} value={'medium'}>Medium</option>

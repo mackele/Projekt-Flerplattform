@@ -24,15 +24,15 @@ export default function Scoreboard() {
 
       {/* Display the scoreboard if there are any results */}
       {results.length > 0 && (
-        <div>
-          <h2>Ditt resultat</h2>
+        <div id="scoreboard">
+          <h1>YOUR SCORE</h1>
           <table>
             <thead>
               <tr>
-                <th>Kategory</th>
-                <th>Svårighetsgrad</th>
+                <th>Category</th>
+                <th>Difficulty</th>
                 <th>Score</th>
-                <th>Datum</th>
+                <th>Date</th>
               </tr>
             </thead>
             <tbody>

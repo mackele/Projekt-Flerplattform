@@ -32,34 +32,36 @@ export default function Game() {
   
 
   return (
-    <div>
-      {/* Display the menu if the game is not executed */}
-      {!questions.length > 0 && (
-        <div id="menu">
-          <Menu categories={categories} setCategories={setCategories}
-          selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}
-          selectedCategoryName={selectedCategoryName} setSelectedCategoryName={setSelectedCategoryName}
-          numQuestions={numQuestions} setNumQuestions={setNumQuestions}
-          questions={questions} setQuestions={setQuestions}
-          difficulty={difficulty} setDifficulty={setDifficulty}/>
+    <div className={selectedCategoryName}>
+      <div id="container">
+        {/* Display the menu if the game is not executed */}
+        {!questions.length > 0 && (
+          <div id="menu">
+            <Menu categories={categories} setCategories={setCategories}
+            selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}
+            selectedCategoryName={selectedCategoryName} setSelectedCategoryName={setSelectedCategoryName}
+            numQuestions={numQuestions} setNumQuestions={setNumQuestions}
+            questions={questions} setQuestions={setQuestions}
+            difficulty={difficulty} setDifficulty={setDifficulty}/>
 
-          <button onClick={handleStartQuiz} disabled={!selectedCategory}>Starta quiz</button> 
-        </div>
-      )}
+            <button onClick={handleStartQuiz} disabled={!selectedCategory}>Starta quiz</button> 
+          </div>
+        )}
 
-      {/* Display the questions when the game is executed */}
-      {questions.length > 0 && (
-        <div id='questions' className={selectedCategoryName}> 
-          <Question questions={questions} questionIndex={currentQuestionIndex} score={score} setScore={setScore} setCurrentQuestionIndex={setCurrentQuestionIndex} selectedCategoryName={selectedCategoryName} difficulty={difficulty}></Question>
-        </div>
-      )}
-      
-      {/* Display the scoreboard in the main menu if the game is not executed */}
-      {!questions.length > 0 && (
-        <div id="scoreboard">
-          <Scoreboard />
-        </div>
-      )}
+        {/* Display the questions when the game is executed */}
+        {questions.length > 0 && (
+          <div id='questions'> 
+            <Question questions={questions} questionIndex={currentQuestionIndex} score={score} setScore={setScore} setCurrentQuestionIndex={setCurrentQuestionIndex} selectedCategoryName={selectedCategoryName} difficulty={difficulty}></Question>
+          </div>
+        )}
+        
+        {/* Display the scoreboard in the main menu if the game is not executed */}
+        {!questions.length > 0 && (
+          <div>
+            <Scoreboard />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

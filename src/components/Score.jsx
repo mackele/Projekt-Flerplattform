@@ -15,9 +15,9 @@ export default function Score (props){
 
     return (
         <div id='score'>
-            <h3>Ditt resultat</h3>
-            <p>{score}/{questionIndex + 1}</p>
-            <button onClick={reload}>Meny</button>
+            <h1>Your Score</h1>
+            <h2>{score}/{questionIndex + 1}</h2>
+            <button onClick={reload}>Menu</button>
         </div>
     );
 };
