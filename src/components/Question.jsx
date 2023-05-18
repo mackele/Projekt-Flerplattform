@@ -45,7 +45,7 @@ export default function Question(props) {
    * @param {Number} score - The score of the round
    * @param {String} selectedCategoryName - The name of the selected category
    */
-  function setLocalStorage(score, selectedCategoryName) {
+  function setLocalStorage(score, selectedCategoryName, numberOfQuestions) {
     const results = localStorage.getItem("Results");
     let resultsArr = [];
     if (results) {
@@ -53,7 +53,8 @@ export default function Question(props) {
     }
     const newScore = {
       "Score": score,
-      "Category": selectedCategoryName
+      "Category": selectedCategoryName,
+      "NumberOfQuestions": numberOfQuestions
     };
     resultsArr.push(newScore);
     localStorage.setItem("Results", JSON.stringify(resultsArr));
@@ -69,7 +70,7 @@ export default function Question(props) {
       setCurrentQuestionIndex(nextQuestionIndex);
       setSelectedAnswer(null); 
     } else {
-      setLocalStorage(score, selectedCategoryName)
+      setLocalStorage(score, selectedCategoryName, questions.length)
       setFinished(true);
     };
   };

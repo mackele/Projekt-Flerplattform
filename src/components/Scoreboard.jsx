@@ -37,7 +37,7 @@ export default function Scoreboard() {
               {results.map((result, index) => (
                 <tr key={index}>
                   <td>{result.Category}</td>
-                  <td>{result.Score}</td>
+                  <td>{result.Score}/{result.NumberOfQuestions}</td>
                 </tr>
               ))}
             </tbody>
