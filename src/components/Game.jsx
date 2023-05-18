@@ -33,8 +33,6 @@ export default function Game() {
 
   return (
     <div>
-      <h1>Game component</h1>
-
       {/* Display the menu if the game is not executed */}
       {!questions.length > 0 && (
         <div id="menu">
@@ -51,7 +49,7 @@ export default function Game() {
 
       {/* Display the questions when the game is executed */}
       {questions.length > 0 && (
-        <div id='questions'> 
+        <div id='questions' className={selectedCategoryName}> 
           <Question questions={questions} questionIndex={currentQuestionIndex} score={score} setScore={setScore} setCurrentQuestionIndex={setCurrentQuestionIndex} selectedCategoryName={selectedCategoryName} difficulty={difficulty}></Question>
         </div>
       )}

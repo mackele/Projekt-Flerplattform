@@ -8,6 +8,7 @@ export default function Question(props) {
   const [finished, setFinished] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
+  let i = 0;
 
 
   /**
@@ -90,24 +91,25 @@ export default function Question(props) {
 
       {/* Display the questions if the game is not finished */}
       {!finished &&
-        <div> 
-          <h2>Question no: {questionIndex + 1} / {questions.length}</h2>
-          <h3>{questions[questionIndex]?.question}</h3>
-          <ul>
+        <div className='question'> 
+          <h1>{selectedCategoryName.toUpperCase()}</h1>
+          <h3>Question no: {questionIndex + 1} / {questions.length}</h3>
+          <h2>{questions[questionIndex]?.question}</h2>
+          <div id='answers'>
             {shuffledQuestions.map((answer) => (
-              <li
+              <div className= {"answer" + (i += 1)}
                 key={answer}
                 onClick={(event) => handleAnswerClick(event, answer === questions[questionIndex]?.correct_answer)}
               >
                 {answer}
-              </li>
+              </div>
             ))}
-          </ul>
-          <button onClick={nextQuestion}>{questionIndex === questions.length - 1 ? "Finish" : "Next Question"}</button>
-          <div className='score'>
-            <p>Score:</p>
+           </div> 
+           <div className='score'>
+            <p>Score: </p>
             <p>{score}</p>
           </div>
+          <button onClick={nextQuestion}>{questionIndex === questions.length - 1 ? "FINISH" : "NEXT QUESTION"}</button>
         </div>
       }
 
