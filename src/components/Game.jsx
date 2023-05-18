@@ -52,7 +52,7 @@ export default function Game() {
       {/* Display the questions when the game is executed */}
       {questions.length > 0 && (
         <div id='questions'> 
-          <Question questions={questions} questionIndex={currentQuestionIndex} score={score} setScore={setScore} setCurrentQuestionIndex={setCurrentQuestionIndex} selectedCategoryName={selectedCategoryName}></Question>
+          <Question questions={questions} questionIndex={currentQuestionIndex} score={score} setScore={setScore} setCurrentQuestionIndex={setCurrentQuestionIndex} selectedCategoryName={selectedCategoryName} difficulty={difficulty}></Question>
         </div>
       )}
       

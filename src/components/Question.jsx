@@ -4,7 +4,7 @@ import Score from "./Score";
 
 
 export default function Question(props) {
-  const { questions, questionIndex, score, setScore, setCurrentQuestionIndex, selectedCategoryName } = props;
+  const { questions, questionIndex, score, setScore, setCurrentQuestionIndex, selectedCategoryName, difficulty } = props;
   const [finished, setFinished] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
@@ -48,13 +48,22 @@ export default function Question(props) {
   function setLocalStorage(score, selectedCategoryName, numberOfQuestions) {
     const results = localStorage.getItem("Results");
     let resultsArr = [];
+
+    const d = new Date();
+    let day = d.getDate();
+    let month = d.getMonth() + 1;
+    let year = d.getFullYear();
+    const timstamp = (year + "-" + month + "-" + day);
+    
     if (results) {
       resultsArr = JSON.parse(results);
     }
     const newScore = {
       "Score": score,
       "Category": selectedCategoryName,
-      "NumberOfQuestions": numberOfQuestions
+      "NumberOfQuestions": numberOfQuestions,
+      "TimeStamp": timstamp,
+      "Difficulty":difficulty.charAt(0).toUpperCase() + difficulty.slice(1)
     };
     resultsArr.push(newScore);
     localStorage.setItem("Results", JSON.stringify(resultsArr));

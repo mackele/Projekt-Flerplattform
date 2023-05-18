@@ -29,15 +29,19 @@ export default function Scoreboard() {
           <table>
             <thead>
               <tr>
-                <th>Category</th>
+                <th>Kategory</th>
+                <th>Svårighetsgrad</th>
                 <th>Score</th>
+                <th>Datum</th>
               </tr>
             </thead>
             <tbody>
               {results.map((result, index) => (
                 <tr key={index}>
                   <td>{result.Category}</td>
+                  <td>{result.Difficulty}</td>
                   <td>{result.Score}/{result.NumberOfQuestions}</td>
+                  <td>{result.TimeStamp}</td>
                 </tr>
               ))}
             </tbody>
