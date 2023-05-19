@@ -238,6 +238,10 @@ select {
   width: 100%;
 }
 
+#scoreboard .line{
+  width: 80%;
+}
+
 #scoreboard h1 {
   text-align: center;
   margin: 20px;
