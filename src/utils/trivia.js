@@ -1,10 +1,9 @@
-
-//Function that removes extra characters that get's added to the questions in the API call
-function decodeHTML(html) {
-    const txt = document.createElement("textarea");
-    txt.innerHTML = html;
-    return txt.value;
-};
+//Function that removes extra characters that get's added to the questions in the API
+function decodeHTML(text) {
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = text;
+    return textarea.value;
+}
 
 
 /**
@@ -14,6 +13,8 @@ function decodeHTML(html) {
  * @param {String} difficulty - The desired difficulty (easy, medium, hard)
  * @returns {Array} - An array with the questions
  */
+
+
 export async function fetchQuestionsByCategory(amount, categoryId, difficulty) {
     try {
       const url = await fetch(`https://opentdb.com/api.php?amount=${amount}&type=multiple&category=${categoryId}&difficulty=${difficulty}`);
