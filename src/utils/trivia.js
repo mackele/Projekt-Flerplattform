@@ -1,9 +1,11 @@
+
 //Function that removes extra characters that get's added to the questions in the API call
-function decodeHTML(text) {
-    const textarea = document.createElement('textarea');
-    textarea.innerHTML = text;
-    return textarea.value;
-}
+function decodeHTML(html) {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+};
+
 
 /**
  * Function that fetch questions by category
@@ -12,25 +14,32 @@ function decodeHTML(text) {
  * @param {String} difficulty - The desired difficulty (easy, medium, hard)
  * @returns {Array} - An array with the questions
  */
-
 export async function fetchQuestionsByCategory(amount, categoryId, difficulty) {
     try {
-        const url = await fetch(`https://opentdb.com/api.php?amount=${amount}&type=multiple&category=${categoryId}&difficulty=${difficulty}`);
-        const response = await url.json();
-        const questionsByCategory = response.results;
+      const url = await fetch(`https://opentdb.com/api.php?amount=${amount}&type=multiple&category=${categoryId}&difficulty=${difficulty}`);
+      const response = await url.json();
+      const questionsByCategory = response.results;
+  
+      const questionsByCategoryArr = [];
+      for (let i = 0; i < questionsByCategory.length; i++) {
+        const question = questionsByCategory[i];
 
-        const questionsByCategoryArr = [];
-        for (let i = 0; i < questionsByCategory.length; i++) {
-            const question = questionsByCategory[i];
-            const questionWithoutExtraCharacters = decodeHTML(question.question);
-            question.question = questionWithoutExtraCharacters
-            questionsByCategoryArr.push(question);
-        };
-        return questionsByCategoryArr;
+        const questionWithoutExtraCharacters = decodeHTML(question.question);
+        const answers = question.incorrect_answers.map(answer => decodeHTML(answer));
+        const correctAnswer = decodeHTML(question.correct_answer);
+
+        question.question = questionWithoutExtraCharacters;
+        question.correct_answer = correctAnswer;
+        question.incorrect_answers = answers;
+  
+        questionsByCategoryArr.push(question);
+      };
+      return questionsByCategoryArr;
     } catch (error) {
-        throw new Error(`Error with fetch of questions by category ${error.message}`);
+      throw new Error(`Error with fetch of questions by category ${error.message}`);
     };
 };
+
 
 
 /**
