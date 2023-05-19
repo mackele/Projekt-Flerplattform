@@ -1,7 +1,7 @@
 body {
   min-height: 100vh;
   margin: 0;
-  font-family: 'Bangers', cursive;
+  font-family: 'Roboto', sans-serif;
   background: -webkit-linear-gradient(-45deg,  #a4036f 0%,#4d47c7 24%,#048ba8 39%,#16db93 50%,#efea5a 69%,#f29e4c 83%,#eb4747 100%);
 }
 
@@ -13,6 +13,7 @@ body {
 }
 
 h1{
+  font-family: 'Bangers', cursive;
   font-size: 35px;
   margin: 45px;
   text-transform: uppercase;
@@ -20,6 +21,7 @@ h1{
 }
 
 h2{
+  font-family: 'Bangers', cursive;
   margin-bottom: 30px;
   margin-top: 5px;
   font-weight: lighter;
@@ -27,6 +29,7 @@ h2{
 }
 
 h3 {
+  font-family: 'Bangers', cursive;
   margin: 0;
   font-weight: lighter;
   font-size: 15px;
@@ -58,7 +61,7 @@ header h1 {
   font-size: 50px;
 }
 
-#line{
+.line{
   height: 4px;
   background: -webkit-linear-gradient(-45deg,  #a4036f 0%,#4d47c7 24%,#048ba8 39%,#16db93 50%,#efea5a 69%,#f29e4c 83%,#eb4747 100%) ;
   width: 80%;
@@ -184,6 +187,7 @@ button:hover {
 }
 
 label {
+  font-family: 'Bangers', cursive;
   margin: 20px 0 5px 0;
   font-weight: lighter;
   font-size: 15px;
@@ -196,6 +200,7 @@ input, select {
   font-size: 15px;
   box-sizing: border-box;
   border: 1px solid black;
+  text-align: center;
 }
 
 select {
@@ -245,6 +250,10 @@ table {
   border-collapse: collapse;
   border: 1px solid black;
   box-shadow: 0 0 10px 0 #5a5a5a;
+}
+
+th {
+  font-family: 'Bangers', cursive;
 }
 
 td, th {

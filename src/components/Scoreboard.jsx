@@ -25,6 +25,7 @@ export default function Scoreboard() {
       {/* Display the scoreboard if there are any results */}
       {results.length > 0 && (
         <div id="scoreboard">
+          <div class="line"></div>
           <h1>YOUR SCORE</h1>
           <table>
             <thead>
