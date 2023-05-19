@@ -3,7 +3,6 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background: -webkit-linear-gradient(-45deg,  #a4036f 0%,#4d47c7 24%,#048ba8 39%,#16db93 50%,#efea5a 69%,#f29e4c 83%,#eb4747 100%); /* Chrome10-25,Safari5.1-6 */
-
 }
 
 .App {
@@ -122,14 +121,12 @@ button:hover {
   box-shadow: none;
   background-color: #16DB93;
   font-weight: bold;
-  font-size: 25px;
 }
 
 .incorrect-answer {
   box-shadow: none;
   background-color: #EB4747;
   font-weight: bold;
-  font-size: 25px;
 }
 
 /*Style for Score.jsx*/
@@ -140,7 +137,9 @@ button:hover {
   flex-direction: column;
   align-items: center;
   width: 80%;
+  min-height: 100vh;
   padding: 40px;
+
 }
 
 #score button{
@@ -249,4 +248,34 @@ td:nth-child(3), th:nth-child(3)
 td:nth-child(4), th:nth-child(4)
 {
   background-color:#F29E4C;
+}
+
+@media screen and (max-width: 500px) {
+  h1, h2 {
+    text-align: center;
+  }
+
+  .App {
+    width: 100%;
+  }
+
+  table {
+    width: 90%;
+  }
+
+  td, th {
+    padding: 3px;
+  }
+
+  input, select, #menu button {
+    width: 90%;
+  }
+
+  #question, .question {
+    width: 95%;
+  }
+
+  #answers div {
+    padding: 20px;
+  }
 }
