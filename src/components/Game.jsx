@@ -35,7 +35,7 @@ export default function Game() {
       <div id="container">
         <header>
           <h1>The Trivia Thrill</h1>
-          <div class="line"></div>
+          <div className="line"></div>
         </header>
         {/* Display the menu if the game is not executed */}
         {!questions.length > 0 && (
