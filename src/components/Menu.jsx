@@ -51,7 +51,6 @@ export default function Menu(props) {
 
   return (
     <div>
-      <h1>The Trivia Thrill</h1>
       <label>
         Category
         <select id="selectCategory" value={selectedCategory ? selectedCategory : 0} onChange={selectCategory}>

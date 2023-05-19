@@ -27,13 +27,16 @@ export default function Game() {
     setCurrentQuestionIndex(0);
     setQuestions(quizQuestions);
     setScore(0);
-    console.log("Quizen startar");
   };
   
 
   return (
     <div className={selectedCategoryName}>
       <div id="container">
+        <header>
+          <h1>The Trivia Thrill</h1>
+          <div id="line"></div>
+        </header>
         {/* Display the menu if the game is not executed */}
         {!questions.length > 0 && (
           <div id="menu">
