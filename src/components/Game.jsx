@@ -11,7 +11,7 @@ export default function Game() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedCategoryName, setSelectedCategoryName] = useState(null);
   const [numQuestions, setNumQuestions] = useState(5);
-  const [difficulty, setDifficulty] = useState(null);
+  const [difficulty, setDifficulty] = useState('easy');
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
