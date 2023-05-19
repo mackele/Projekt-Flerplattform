@@ -5,6 +5,14 @@
  * @param {String} difficulty - The desired difficulty (easy, medium, hard)
  * @returns {Array} - An array with the questions
  */
+
+//Function that removes extra characters that get's added to the questions in the API call
+function decodeHTML(text) {
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = text;
+    return textarea.value;
+}
+
 export async function fetchQuestionsByCategory(amount, categoryId, difficulty) {
     try {
         const url = await fetch(`https://opentdb.com/api.php?amount=${amount}&type=multiple&category=${categoryId}&difficulty=${difficulty}`);
@@ -13,7 +21,10 @@ export async function fetchQuestionsByCategory(amount, categoryId, difficulty) {
 
         const questionsByCategoryArr = [];
         for (let i = 0; i < questionsByCategory.length; i++) {
-            questionsByCategoryArr.push(questionsByCategory[i]);
+            const question = questionsByCategory[i];
+            const questionWithoutExtraCharacters = decodeHTML(question.question);
+            question.question = questionWithoutExtraCharacters
+            questionsByCategoryArr.push(question);
         };
         return questionsByCategoryArr;
     } catch (error) {
