@@ -1,9 +1,10 @@
-//Function that removes extra characters that get's added to the questions in the API call
+//Function that removes extra characters that get's added to the questions in the API
 function decodeHTML(text) {
     const textarea = document.createElement('textarea');
     textarea.innerHTML = text;
     return textarea.value;
 }
+
 
 /**
  * Function that fetch questions by category
@@ -12,6 +13,7 @@ function decodeHTML(text) {
  * @param {String} difficulty - The desired difficulty (easy, medium, hard)
  * @returns {Array} - An array with the questions
  */
+
 
 export async function fetchQuestionsByCategory(amount, categoryId, difficulty) {
     try {
