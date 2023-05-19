@@ -38,13 +38,14 @@ export default function Question(props) {
           event.currentTarget.classList.add("correct-answer");
         } else {
           event.currentTarget.classList.add("incorrect-answer");
+          const answerElements = event.currentTarget.parentNode.children;
+          for (let i = 0; i < answerElements.length; i++) {
+            if (answerElements[i].textContent === correctAnswer) {
+              answerElements[i].classList.add("theAnswer");
+            };
         };
-        const answerElements = event.currentTarget.parentNode.children;
-        for (let i = 0; i < answerElements.length; i++) {
-          if (answerElements[i].textContent === correctAnswer) {
-            answerElements[i].classList.add("correct-answer");
-          };
         };
+        
         setSelectedAnswer(event.currentTarget);
       };
     };

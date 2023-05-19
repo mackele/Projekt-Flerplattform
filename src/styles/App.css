@@ -123,6 +123,11 @@ button:hover {
   font-weight: bold;
 }
 
+.theAnswer{
+  color: #15663b;
+  font-weight: bold;
+}
+
 /*Style for Score.jsx*/
 
 #score {
