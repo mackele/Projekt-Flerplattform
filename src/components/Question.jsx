@@ -7,6 +7,7 @@ export default function Question(props) {
   const { questions, questionIndex, score, setScore, setCurrentQuestionIndex, selectedCategoryName, difficulty } = props;
   const [finished, setFinished] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [correctAnswer, setCorrectAnswer] = useState([]);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
   let i = 0;
 
@@ -17,6 +18,8 @@ export default function Question(props) {
   useEffect(function shuffleQuestions() {
     if (questions[questionIndex]) {
       const shuffledQuestions = [...questions[questionIndex].incorrect_answers, questions[questionIndex].correct_answer].sort(() => Math.random() - 0.5);
+      const correct_answer = questions[questionIndex].correct_answer;
+      setCorrectAnswer(correct_answer);
       setShuffledQuestions(shuffledQuestions);
     };
   }, [questions, questionIndex]);
@@ -35,6 +38,12 @@ export default function Question(props) {
           event.currentTarget.classList.add("correct-answer");
         } else {
           event.currentTarget.classList.add("incorrect-answer");
+        };
+        const answerElements = event.currentTarget.parentNode.children;
+        for (let i = 0; i < answerElements.length; i++) {
+          if (answerElements[i].textContent === correctAnswer) {
+            answerElements[i].classList.add("correct-answer");
+          };
         };
         setSelectedAnswer(event.currentTarget);
       };
