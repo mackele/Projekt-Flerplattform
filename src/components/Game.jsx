@@ -44,7 +44,7 @@ export default function Game() {
             questions={questions} setQuestions={setQuestions}
             difficulty={difficulty} setDifficulty={setDifficulty}/>
 
-            <button onClick={handleStartQuiz} disabled={!selectedCategory}>Starta quiz</button> 
+            <button onClick={handleStartQuiz} disabled={!selectedCategory}>Start Quiz</button> 
           </div>
         )}
 

@@ -1,7 +1,7 @@
 body {
   min-height: 100vh;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Bangers', cursive;
   background: -webkit-linear-gradient(-45deg,  #a4036f 0%,#4d47c7 24%,#048ba8 39%,#16db93 50%,#efea5a 69%,#f29e4c 83%,#eb4747 100%); /* Chrome10-25,Safari5.1-6 */
 }
 
