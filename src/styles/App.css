@@ -76,6 +76,10 @@ header h1 {
   margin: auto;
 }
 
+.question h2, .question h3 {
+  font-family: 'Roboto', sans-serif;
+}
+
 #answers{
   width: 100%;
   text-align: center;
@@ -183,6 +187,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   width: 100%;
 }
 
