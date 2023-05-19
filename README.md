@@ -8,7 +8,7 @@
 #### Lukas Jönsson
 
 # Project Description
-Quiz game using React and TriviaAPI that let's the user play different games depending on category and difficulty of the trivia questions. It saves the results, categories and quiz of any quiz into local storage.
+Quiz game using React and TriviaAPI that let's the user play different games depending on category and difficulty of the trivia questions. It saves the results, categories and date into local storage.
 
   
 ## Install the dependencies
