@@ -13,15 +13,17 @@ body {
 }
 
 h1{
-  font-size: 40px;
+  font-size: 45px;
   margin: 45px;
   text-transform: uppercase;
+  text-align: center ;
 }
 
 h2{
   margin-bottom: 30px;
   margin-top: 5px;
   font-weight: lighter;
+  text-align: center;
 }
 
 h3 {
@@ -106,6 +108,7 @@ background-color: #F29E4C;
 
 .question button{
   width: 100%;
+  margin-bottom: 40px;
 }
 
 button:hover {
@@ -251,10 +254,6 @@ td:nth-child(4), th:nth-child(4)
 }
 
 @media screen and (max-width: 500px) {
-  h1, h2 {
-    text-align: center;
-  }
-
   .App {
     width: 100%;
   }
